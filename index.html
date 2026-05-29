@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Daniela Valentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display&display=swap');
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            background-color: #000;
+        }
+
+        .page {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .music-overlay {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+
+    <!-- Sección 1: Rapunzel -->
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg" 
+             alt="Portada Rapunzel" class="bg-img">
+    </section>
+
+    <!-- Sección 2: Cenicienta con Música -->
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta.jpg" 
+             alt="Diseño Adicional" class="bg-img">
+        
+        <div class="music-overlay flex items-center gap-6">
+            <div id="status" class="text-purple-900 font-bold">Música en espera</div>
+            <button id="playBtn" class="bg-purple-600 text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform">
+                Play
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección 3: Cenicienta (1) -->
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(1).jpg" 
+             alt="Detalle 1" class="bg-img">
+    </section>
+
+    <!-- Sección 4: Cenicienta (2) -->
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(2).jpg" 
+             alt="Detalle 2" class="bg-img">
+    </section>
+
+    <!-- Sección 5: Cenicienta (3) -->
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(3).jpg" 
+             alt="Detalle 3" class="bg-img">
+    </section>
+
+    <!-- Sección 6: Cenicienta (4) -->
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" 
+             alt="Detalle 4" class="bg-img">
+    </section>
+
+    <!-- Sección 7: Cenicienta (5) -->
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(5).jpg" 
+             alt="Detalle 5" class="bg-img">
+    </section>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const status = document.getElementById('status');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if(isPlaying) {
+                status.textContent = "Reproduciendo... ✨";
+                playBtn.textContent = "Pausa";
+            } else {
+                status.textContent = "Música en espera";
+                playBtn.textContent = "Play";
+            }
+        });
+    </script>
+</body>
+</html>
