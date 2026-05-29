@@ -6,117 +6,100 @@
     <title>Mis XV Años - Daniela Valentina</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap');
         
-        body {
-            font-family: 'Playfair Display', serif;
-            margin: 0;
-            padding: 0;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            background-color: #000;
-        }
+        body { font-family: 'Playfair Display', serif; margin: 0; padding: 0; background-color: #fcf8f9; color: #4a3f5a; }
+        .page { min-height: 80vh; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; padding: 1rem 0; }
+        .page-img { max-height: 75vh; max-width: 90vw; width: auto; object-fit: contain; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(150, 109, 160, 0.2); }
 
-        .page {
-            height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bg-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* Reproductor Elegante */
+        .elegant-player {
             position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .music-overlay {
-            position: absolute;
-            bottom: 10%;
+            top: 20%;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
+            width: 240px;
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
-            padding: 15px 30px;
-            border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            z-index: 10;
+            padding: 1.2rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(150, 109, 160, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            z-index: 20;
+            text-align: center;
         }
+        .progress-bar { height: 4px; background: #e2d7e5; border-radius: 4px; position: relative; cursor: pointer; margin: 10px 0; overflow: hidden; }
+        .progress-fill { height: 100%; background: #966da0; width: 0%; transition: width 0.1s linear; }
+        .controls { display: flex; justify-content: center; align-items: center; gap: 20px; color: #7a6385; font-size: 1.4rem; }
+        .btn-main { background: #966da0; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(150, 109, 160, 0.4); }
+        
+        .btn-ubicacion { position: absolute; bottom: 16px; padding: 0.75rem 2rem; color: white; border-radius: 9999px; font-family: 'Dancing Script', cursive; font-size: 1.25rem; box-shadow: 0 4px 15px rgba(150, 109, 160, 0.3); background-color: #966da0; z-index: 20; transition: transform 0.2s; }
+        .btn-ubicacion:hover { transform: scale(1.05); }
+        .btn-ubicacion-alto { bottom: 50%; /* Subido acumulativamente */ }
     </style>
 </head>
-<body class="bg-gray-900">
+<body>
 
-    <!-- Sección 1: Rapunzel -->
-    <section class="page">
-        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg" 
-             alt="Portada Rapunzel" class="bg-img">
-    </section>
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg" class="page-img"></section>
 
-    <!-- Sección 2: Cenicienta con Música -->
     <section class="page">
-        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta.jpg" 
-             alt="Diseño Adicional" class="bg-img">
-        
-        <div class="music-overlay flex items-center gap-6">
-            <div id="status" class="text-purple-900 font-bold">Música en espera</div>
-            <button id="playBtn" class="bg-purple-600 text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform">
-                Play
-            </button>
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta.jpg" class="page-img">
+        <div class="elegant-player">
+            <div class="text-xs font-light text-gray-500 uppercase tracking-widest mb-1">Música de fondo</div>
+            <div class="progress-bar" id="progressContainer"><div id="progressBar" class="progress-fill"></div></div>
+            <div class="controls">
+                <button id="prevBtn" class="hover:text-[#966da0]">⏮</button>
+                <button id="playBtn" class="btn-main"><span id="playIcon">▶</span></button>
+                <button id="nextBtn" class="hover:text-[#966da0]">⏭</button>
+            </div>
+            <audio id="audioTrack" src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/Chayanne%2C%20Danna%20Paola%20-%20Veo%20en%20ti%20la%20luz%20(De%20EnredadosVideo%20Oficial).mp3"></audio>
         </div>
     </section>
 
-    <!-- Sección 3: Cenicienta (1) -->
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(1).jpg" class="page-img"></section>
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM.jpeg" class="page-img"></section>
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(2).jpg" class="page-img"></section>
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(3).jpg" class="page-img"></section>
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(3).jpeg" class="page-img"></section>
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" class="page-img"></section>
+    
     <section class="page">
-        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(1).jpg" 
-             alt="Detalle 1" class="bg-img">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(5).jpg" class="page-img">
+        <a href="https://www.google.com/maps/place/Rector%C3%ADa+de+la+Sagrada+Familia/data=!4m2!3m1!1s0x0:0x8e3bdd0366914147?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-ubicacion">Ver Ubicación</a>
+    </section>
+    
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(4).jpeg" class="page-img"></section>
+    
+    <section class="page">
+        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(6).jpg" class="page-img">
+        <a href="https://www.google.com/maps/place/Rector%C3%ADa+de+la+Sagrada+Familia/data=!4m2!3m1!1s0x0:0x8e3bdd0366914147?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-ubicacion btn-ubicacion-alto">Ver Ubicación</a>
     </section>
 
-    <!-- Sección 4: Cenicienta (2) -->
-    <section class="page">
-        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(2).jpg" 
-             alt="Detalle 2" class="bg-img">
-    </section>
-
-    <!-- Sección 5: Cenicienta (3) -->
-    <section class="page">
-        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(3).jpg" 
-             alt="Detalle 3" class="bg-img">
-    </section>
-
-    <!-- Sección 6: Cenicienta (4) -->
-    <section class="page">
-        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" 
-             alt="Detalle 4" class="bg-img">
-    </section>
-
-    <!-- Sección 7: Cenicienta (5) -->
-    <section class="page">
-        <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(5).jpg" 
-             alt="Detalle 5" class="bg-img">
-    </section>
+    <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(7).jpg" class="page-img"></section>
 
     <script>
+        const audio = document.getElementById('audioTrack');
         const playBtn = document.getElementById('playBtn');
-        const status = document.getElementById('status');
-        let isPlaying = false;
+        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
 
         playBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            if(isPlaying) {
-                status.textContent = "Reproduciendo... ✨";
-                playBtn.textContent = "Pausa";
-            } else {
-                status.textContent = "Música en espera";
-                playBtn.textContent = "Play";
-            }
+            if (audio.paused) { audio.play(); document.getElementById('playIcon').textContent = '⏸'; }
+            else { audio.pause(); document.getElementById('playIcon').textContent = '▶'; }
         });
+
+        audio.addEventListener('timeupdate', () => {
+            progressBar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+        });
+
+        progressContainer.addEventListener('click', (e) => {
+            const width = progressContainer.clientWidth;
+            const clickX = e.offsetX;
+            audio.currentTime = (clickX / width) * audio.duration;
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => audio.currentTime = Math.max(0, audio.currentTime - 10));
+        document.getElementById('nextBtn').addEventListener('click', () => audio.currentTime = Math.min(audio.duration, audio.currentTime + 10));
     </script>
 </body>
 </html>
