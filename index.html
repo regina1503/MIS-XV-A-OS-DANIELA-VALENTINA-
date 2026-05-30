@@ -28,13 +28,14 @@
         .timer-val { font-size: 1.2rem; }
         .timer-label { font-size: 0.6rem; text-transform: uppercase; }
         
-        /* Estilos reproductor */
-        .player-container { width: 90%; max-width: 350px; text-align: center; color: #966da0; }
-        #progressBar { width: 100%; height: 6px; background: rgba(150, 109, 160, 0.3); border-radius: 3px; cursor: pointer; margin: 10px 0; overflow: hidden; }
+        /* Estilos reproductor (Reducido un 20%) */
+        .player-container { width: 72%; max-width: 280px; text-align: center; color: #966da0; }
+        #progressBar { width: 100%; height: 5px; background: rgba(150, 109, 160, 0.3); border-radius: 3px; cursor: pointer; margin: 8px 0; overflow: hidden; }
         #progress { height: 100%; background: #966da0; width: 0%; }
-        .controls { display: flex; justify-content: center; gap: 20px; align-items: center; margin-top: 5px; color: #966da0; }
-        .control-btn { color: #966da0; transition: transform 0.1s; }
-        .control-btn:active { transform: scale(0.9); }
+        .controls { display: flex; justify-content: center; gap: 16px; align-items: center; margin-top: 4px; color: #966da0; }
+        .icon-btn { width: 32px; height: 32px; fill: currentColor; stroke: currentColor; transition: transform 0.1s; }
+        .play-btn { width: 40px; height: 40px; fill: currentColor; stroke: currentColor; }
+        .icon-btn:active { transform: scale(0.9); }
     </style>
 </head>
 <body class="container-snap" id="bodySnap">
@@ -60,12 +61,18 @@
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(9).jpg" class="page-img">
             <div class="absolute inset-0 flex items-center justify-center p-4">
                 <div class="player-container">
-                    <p class="text-sm font-bold truncate mb-2">Veo en ti la luz</p>
+                    <p class="text-xs font-bold truncate mb-2">Veo en ti la luz</p>
                     <div id="progressBar" onclick="seek(event)"><div id="progress"></div></div>
                     <div class="controls">
-                        <button onclick="changeTime(-10)" class="control-btn text-2xl">⏪</button>
-                        <button onclick="toggleAudio()" id="playPauseBtn" class="control-btn text-4xl font-bold">⏸️</button>
-                        <button onclick="changeTime(10)" class="control-btn text-2xl">⏩</button>
+                        <button onclick="changeTime(-10)" class="icon-btn">
+                            <svg viewBox="0 0 24 24"><path d="M11 19V5l-9 7 9 7m10 0V5l-9 7 9 7z"/></svg>
+                        </button>
+                        <button onclick="toggleAudio()" id="playPauseBtn" class="play-btn">
+                            <svg id="iconStatus" viewBox="0 0 24 24"><path id="pathStatus" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <button onclick="changeTime(10)" class="icon-btn">
+                            <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -111,7 +118,7 @@
         const eventDate = new Date("2026-08-01T18:00:00").getTime();
         const audio = document.getElementById('audioTrack');
         const progress = document.getElementById('progress');
-        const playPauseBtn = document.getElementById('playPauseBtn');
+        const pathStatus = document.getElementById('pathStatus');
 
         audio.addEventListener('timeupdate', () => {
             const pct = (audio.currentTime / audio.duration) * 100;
@@ -142,8 +149,13 @@
         updateTimer();
 
         function toggleAudio() {
-            if (audio.paused) { audio.play(); playPauseBtn.innerText = "⏸️"; }
-            else { audio.pause(); playPauseBtn.innerText = "▶️"; }
+            if (audio.paused) { 
+                audio.play(); 
+                pathStatus.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); 
+            } else { 
+                audio.pause(); 
+                pathStatus.setAttribute('d', 'M8 5v14l11-7z'); 
+            }
         }
 
         const lista = [ { nombre: "JUAN OCAMPO", pases: 2 }, { nombre: "GIBRAN ESCOBAR", pases: 2 }, { nombre: "ALMA OCAMPO", pases: 2 }, { nombre: "DANIEL MACIAS", pases: 2 }, { nombre: "HENRRY OCAMPO", pases: 6 }, { nombre: "BRANDON OCAMPO", pases: 2 }, { nombre: "MARIO OCAMPO", pases: 7 }, { nombre: "CLEOTILDE OCAMPO", pases: 2 }, { nombre: "JANETH OCAMPO", pases: 4 }, { nombre: "JULIA OCAMPO", pases: 1 }, { nombre: "NAYELI OCAMPO", pases: 1 }, { nombre: "CARMEN OCAMPO", pases: 2 }, { nombre: "RODRIGO PALMA", pases: 7 }, { nombre: "GABRIELA OCAMPO", pases: 2 }, { nombre: "JULIAN MIRANDA", pases: 2 }, { nombre: "RUBEN LOPEZ", pases: 3 }, { nombre: "GUADALUPE MIRANDA", pases: 4 }, { nombre: "GUILLERMO MIRANDA", pases: 2 }, { nombre: "JAVIER MIRANDA", pases: 2 }, { nombre: "RICARDO MIRANDA", pases: 2 }, { nombre: "SANDRA MIRANDA", pases: 3 }, { nombre: "JUAN MIRANDA", pases: 4 }, { nombre: "JORGE SERRANO", pases: 3 }, { nombre: "ARTURO MIRANDA", pases: 3 }, { nombre: "DIEGO ESCOBAR", pases: 2 }, { nombre: "ALBERTO MIRANDA", pases: 2 }, { nombre: "ANTONIO ARRIAGA", pases: 3 }, { nombre: "EDSON MIRANDA", pases: 2 }, { nombre: "JESSIE MIRANDA", pases: 2 }, { nombre: "FELICIANO MIRANDA", pases: 6 }, { nombre: "SALVADOR MIRANDA", pases: 2 }, { nombre: "PAULINA SERRANO", pases: 2 }, { nombre: "VIVIANA ABARCA", pases: 3 }, { nombre: "FERNANDO ZEPEDA", pases: 4 }, { nombre: "FIDEL ANGUIANO", pases: 5 }, { nombre: "MARIA VALENZUELA", pases: 3 }, { nombre: "LILIANA CARDOSO", pases: 2 }, { nombre: "FRANCEZCO MARTINEZ", pases: 2 }, { nombre: "ARTURO SERRANO", pases: 2 }, { nombre: "ANTONIO MALDONADO", pases: 2 }, { nombre: "EDGAR GARCIA", pases: 2 }, { nombre: "LINO GARCIA", pases: 2 }, { nombre: "SANDRA LUZ GARCIA", pases: 1 }, { nombre: "EDUARDO GARCIA", pases: 3 }, { nombre: "RAUL SANCHEZ", pases: 3 }, { nombre: "VERONICA GARCIA", pases: 5 }, { nombre: "OSCAR ALVAREZ", pases: 2 }, { nombre: "MIGUEL ZARATE", pases: 4 }, { nombre: "JULIO AGMIR", pases: 4 }, { nombre: "ADRIANA", pases: 2 }, { nombre: "MAYRA MORALES", pases: 3 }, { nombre: "DANIELA", pases: 1 }, { nombre: "CAMILA RAFA", pases: 1 }, { nombre: "VANESSA", pases: 1 }, { nombre: "ADAMARIS", pases: 1 }, { nombre: "PAOLA", pases: 1 }, { nombre: "ABIGAIL", pases: 1 }, { nombre: "IAN", pases: 1 }, { nombre: "SANTIAGO", pases: 1 }, { nombre: "REGINA", pases: 1 }, { nombre: "WINNET", pases: 1 } ];
