@@ -20,32 +20,33 @@
         .hidden-sections { display: none; }
         .btn-lila { background-color: #966da0; color: white; }
         .btn-ubicacion { position: absolute; bottom: 8%; padding: 0.6rem 1.5rem; color: white; border-radius: 2rem; font-family: 'Dancing Script', cursive; font-size: 1.2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); background-color: #966da0; z-index: 20; }
+        .nombre-quince { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #966da0; margin-bottom: 0.5rem; }
     </style>
 </head>
 <body class="container-snap" id="bodySnap">
 
-    <!-- AUDIO -->
     <audio id="audioTrack" loop>
         <source src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/Chayanne%2C%20Danna%20Paola%20-%20Veo%20en%20ti%20la%20luz%20(De%20EnredadosVideo%20Oficial).mp3" type="audio/mpeg">
     </audio>
 
-    <!-- BIENVENIDA -->
     <section class="page lila-bg" id="welcomePage">
         <div class="card">
-            <h2 class="text-2xl font-bold mb-2">Bienvenido</h2>
+            <div class="nombre-quince">Daniela Valentina</div>
+            <h2 class="text-xl font-bold mb-2">Mis XV Años</h2>
             <p class="text-sm italic">Escribe tu nombre para abrir la invitación</p>
             <input type="text" id="nameInput" placeholder="Tu nombre...">
             <button onclick="iniciarSesion()" class="mt-4 w-full btn-lila py-3 rounded-xl font-bold">Entrar</button>
         </div>
     </section>
 
-    <!-- INVITACIÓN COMPLETA -->
     <div id="mainContent" class="hidden-sections">
         <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta.jpg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(1).jpg" class="page-img"></section>
+        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(9).jpg" class="page-img"></section>
+        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(10).jpg" class="page-img"></section>
         <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM.jpeg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(2).jpg" class="page-img"></section>
+        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(11).jpg" class="page-img"></section>
+        <!-- Nueva imagen añadida después de la página 5 -->
+        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.08%20PM%20(1).jpeg" class="page-img"></section>
         <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(3).jpg" class="page-img"></section>
         <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(3).jpeg" class="page-img"></section>
         <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" class="page-img"></section>
@@ -54,7 +55,6 @@
             <a href="https://maps.google.com" target="_blank" class="btn-ubicacion">Ver Ubicación</a>
         </section>
         <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(6).jpg" class="page-img"></section>
-        <!-- IMAGEN AGREGADA DESPUÉS DE PÁGINA 10 -->
         <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(1).jpeg" class="page-img"></section>
         
         <section class="page">
@@ -71,39 +71,53 @@
 
     <script>
         const lista = [
-            { nombre: "SHARON OCAMPO", pases: 1 },
-            { nombre: "GABRIEL OCAMPO", pases: 2 },
-            { nombre: "CARITINA MIRANDA", pases: 1 },
-            { nombre: "JUAN CARLOS GARCIA OCAMPO", pases: 5 },
-            { nombre: "GIBRAN ESCOBAR", pases: 6 },
-            { nombre: "RODRIGO PALMA", pases: 7 },
-            { nombre: "EDUARDO GARCIA", pases: 3 },
-            { nombre: "ADRIANA", pases: 2 }
+            { nombre: "JUAN OCAMPO", pases: 2 }, { nombre: "GIBRAN ESCOBAR", pases: 2 }, { nombre: "ALMA OCAMPO", pases: 2 },
+            { nombre: "DANIEL MACIAS", pases: 2 }, { nombre: "HENRRY OCAMPO", pases: 6 }, { nombre: "BRANDON OCAMPO", pases: 2 },
+            { nombre: "MARIO OCAMPO", pases: 7 }, { nombre: "MARIO OCAMPO", pases: 2 }, { nombre: "CLEOTILDE OCAMPO", pases: 2 },
+            { nombre: "JANETH OCAMPO", pases: 4 }, { nombre: "JULIA OCAMPO", pases: 1 }, { nombre: "NAYELI OCAMPO", pases: 1 },
+            { nombre: "CARMEN OCAMPO", pases: 2 }, { nombre: "RODRIGO PALMA", pases: 7 }, { nombre: "GABRIELA OCAMPO", pases: 2 },
+            { nombre: "JULIAN MIRANDA", pases: 2 }, { nombre: "RUBEN LOPEZ", pases: 3 }, { nombre: "GUADALUPE MIRANDA", pases: 4 },
+            { nombre: "GUILLERMO MIRANDA", pases: 2 }, { nombre: "JAVIER MIRANDA", pases: 2 }, { nombre: "RICARDO MIRANDA", pases: 2 },
+            { nombre: "SANDRA MIRANDA", pases: 3 }, { nombre: "JUAN MIRANDA", pases: 4 }, { nombre: "JORGE SERRANO", pases: 3 },
+            { nombre: "ARTURO MIRANDA", pases: 3 }, { nombre: "DIEGO ESCOBAR", pases: 2 }, { nombre: "ALBERTO MIRANDA", pases: 2 },
+            { nombre: "ANTONIO ARRIAGA", pases: 3 }, { nombre: "EDSON MIRANDA", pases: 2 }, { nombre: "JESSIE MIRANDA", pases: 2 },
+            { nombre: "FELICIANO MIRANDA", pases: 6 }, { nombre: "SALVADOR MIRANDA", pases: 2 }, { nombre: "PAULINA SERRANO", pases: 2 },
+            { nombre: "VIVIANA ABARCA", pases: 3 }, { nombre: "FERNANDO ZEPEDA", pases: 4 }, { nombre: "FIDEL ANGUIANO", pases: 5 },
+            { nombre: "MARIA VALENZUELA", pases: 3 }, { nombre: "LILIANA CARDOSO", pases: 2 }, { nombre: "FRANCEZCO MARTINEZ", pases: 2 },
+            { nombre: "ARTURO SERRANO", pases: 2 }, { nombre: "ANTONIO MALDONADO", pases: 2 }, { nombre: "EDGAR GARCIA", pases: 2 },
+            { nombre: "LINO GARCIA", pases: 2 }, { nombre: "SANDRA LUZ GARCIA", pases: 1 }, { nombre: "EDUARDO GARCIA", pases: 3 },
+            { nombre: "RAUL SANCHEZ", pases: 3 }, { nombre: "VERONICA GARCIA", pases: 5 }, { nombre: "OSCAR ALVAREZ", pases: 2 },
+            { nombre: "MIGUEL ZARATE", pases: 4 }, { nombre: "JULIO AGMIR", pases: 4 }, { nombre: "ADRIANA", pases: 2 },
+            { nombre: "MAYRA MORALES", pases: 3 }, { nombre: "DANIELA", pases: 1 }, { nombre: "CAMILA RAFA", pases: 1 },
+            { nombre: "VANESSA", pases: 1 }, { nombre: "ADAMARIS", pases: 1 }, { nombre: "PAOLA", pases: 1 },
+            { nombre: "ABIGAIL", pases: 1 }, { nombre: "IAN", pases: 1 }, { nombre: "SANTIAGO", pases: 1 },
+            { nombre: "REGINA", pases: 1 }, { nombre: "WINNET", pases: 1 }
         ];
 
         function iniciarSesion() {
-            const input = document.getElementById('nameInput').value.toUpperCase();
-            const inv = lista.find(i => i.nombre.includes(input));
+            const nombreIngresado = document.getElementById('nameInput').value.trim();
+            const inv = lista.find(i => i.nombre.toUpperCase() === nombreIngresado.toUpperCase());
+            
             if(inv) {
                 document.getElementById('welcomePage').style.display = 'none';
                 document.getElementById('mainContent').classList.remove('hidden-sections');
                 document.getElementById('bodySnap').style.overflowY = 'auto';
                 
-                // Reproducir audio
-                const audio = document.getElementById('audioTrack');
-                audio.play();
+                document.getElementById('audioTrack').play();
                 
-                document.getElementById('msg').innerText = `Hola ${inv.nombre}, confirma tus ${inv.pases} pases:`;
+                document.getElementById('msg').innerText = `Hola ${inv.nombre}, tienes asignados ${inv.pases} pases.`;
                 const optDiv = document.getElementById('options');
-                for(let i=1; i <= inv.pases; i++) {
-                    const btn = document.createElement('a');
-                    btn.className = "btn-lila p-3 rounded-lg block font-bold";
-                    btn.innerText = `Confirmar ${i} persona(s)`;
-                    btn.href = `https://docs.google.com/forms/d/e/1FAIpQLSed3EoKIgSgmdwkQvF5e5vvGznDG_oqXsJXY1tiNfcXOVKrTw/viewform?usp=pp_url&entry.1093125026=${inv.nombre}&entry.1396264977=${i}`;
-                    btn.target = "_blank";
-                    optDiv.appendChild(btn);
-                }
-            } else { alert("Nombre no encontrado."); }
+                optDiv.innerHTML = ''; 
+                
+                const btn = document.createElement('a');
+                btn.className = "btn-lila p-4 rounded-lg block font-bold text-lg";
+                btn.innerText = "Confirmar Asistencia";
+                
+                const nombreCodificado = encodeURIComponent(inv.nombre);
+                btn.href = `https://docs.google.com/forms/d/e/1FAIpQLSed3EoKIgSgmdwkQvF5e5vvGznDG_oqXsJXY1tiNfcXOVKrTw/viewform?usp=pp_url&entry.1093125026=${nombreCodificado}&entry.1396264977=${inv.pases}`;
+                btn.target = "_blank";
+                optDiv.appendChild(btn);
+            } else { alert("Nombre no encontrado. Intenta de nuevo."); }
         }
     </script>
 </body>
