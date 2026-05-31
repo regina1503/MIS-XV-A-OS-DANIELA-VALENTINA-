@@ -4,178 +4,792 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mis XV Años - Daniela Valentina</title>
+    <!-- Tailwind CSS para diseño fluido -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts sofisticadas -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
-        * { box-sizing: border-box; }
-        body { font-family: 'Playfair Display', serif; background-color: #000; overflow: hidden; }
-        .container-snap { height: 100dvh; overflow-y: hidden; scroll-snap-type: y mandatory; scrollbar-width: none; }
-        .page { height: 100dvh; width: 100vw; display: flex; align-items: center; justify-content: center; position: relative; scroll-snap-align: start; overflow: hidden; padding: 0; }
-        .page-img { width: 100%; height: 100%; object-fit: cover; }
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
         
-        .card { background: rgba(255,255,255,0.95); padding: 1.5rem; border-radius: 1rem; width: 85%; max-width: 300px; text-align: center; color: #4a3f5a; }
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #0b0712;
+            color: #f3f0f7;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+
+        .font-accent {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .font-sans-serif {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Contenedor de scroll snap ultra-suave */
+        .container-snap {
+            height: 100dvh;
+            overflow-y: hidden;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
         
-        input { width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 0.4rem; margin-top: 0.5rem; text-align: center; }
+        .container-snap::-webkit-scrollbar {
+            display: none;
+        }
         
-        .hidden-sections { display: none; }
-        .btn-lila { background-color: #966da0; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; }
-        .btn-ubicacion { padding: 0.6rem 1.5rem; color: white; border-radius: 2rem; font-family: 'Dancing Script', cursive; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); background-color: #966da0; }
-        .nombre-quince { font-family: 'Dancing Script', cursive; font-size: 2rem; color: #966da0; margin-bottom: 0.3rem; }
+        .page {
+            height: 100dvh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
         
-        /* Estilos cuenta regresiva */
-        .timer-container { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
-        .timer-circle { width: 60px; height: 60px; border: 2px solid #966da0; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #966da0; font-weight: bold; background: white; }
-        .timer-val { font-size: 1.2rem; }
-        .timer-label { font-size: 0.6rem; text-transform: uppercase; }
+        /* Imágenes de fondo limpias sin películas transparentes */
+        .page-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 12s ease-out;
+        }
+
+        .page:hover .page-img {
+            transform: scale(1.04);
+        }
         
-        /* Estilos reproductor (Reducido un 20%) */
-        .player-container { width: 72%; max-width: 280px; text-align: center; color: #966da0; }
-        #progressBar { width: 100%; height: 5px; background: rgba(150, 109, 160, 0.3); border-radius: 3px; cursor: pointer; margin: 8px 0; overflow: hidden; }
-        #progress { height: 100%; background: #966da0; width: 0%; }
-        .controls { display: flex; justify-content: center; gap: 16px; align-items: center; margin-top: 4px; color: #966da0; }
-        .icon-btn { width: 32px; height: 32px; fill: currentColor; stroke: currentColor; transition: transform 0.1s; }
-        .play-btn { width: 40px; height: 40px; fill: currentColor; stroke: currentColor; }
-        .icon-btn:active { transform: scale(0.9); }
+        /* Tarjetas de Vidrio de Invitados (Página de bienvenida) */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(150, 109, 160, 0.3);
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 0 15px rgba(150, 109, 160, 0.2);
+            color: #3b2f44;
+            padding: 2.2rem 1.5rem;
+            width: 88%;
+            max-width: 340px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        /* Botón Lila Mágico para ubicaciones y accesos */
+        .btn-magic {
+            background: linear-gradient(135deg, #a881b4 0%, #7e528b 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(126, 82, 139, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-magic:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(126, 82, 139, 0.2);
+        }
+
+        /* Entrada de texto */
+        .magic-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid rgba(150, 109, 160, 0.2);
+            border-radius: 0.75rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            color: #3b2f44;
+            outline: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .magic-input:focus {
+            border-color: #966da0;
+            box-shadow: 0 0 10px rgba(150, 109, 160, 0.3);
+            background: #ffffff;
+        }
+
+        /* Círculos Lila del Temporizador Horizontal */
+        .timer-circle {
+            width: 64px;
+            height: 64px;
+            border: 2px solid #966da0;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #7e528b;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 12px rgba(150, 109, 160, 0.2), inset 0 0 8px rgba(150, 109, 160, 0.1);
+            animation: pulse-glow-lila 3s infinite alternate;
+        }
+
+        @keyframes pulse-glow-lila {
+            0% { box-shadow: 0 4px 12px rgba(150, 109, 160, 0.2), inset 0 0 5px rgba(150, 109, 160, 0.1); border-color: #966da0; }
+            100% { box-shadow: 0 4px 20px rgba(150, 109, 160, 0.4), inset 0 0 10px rgba(150, 109, 160, 0.2); border-color: #dfba6b; }
+        }
+
+        /* Lista de Autocompletado */
+        .suggest-box {
+            max-height: 140px;
+            overflow-y: auto;
+            border-radius: 0.75rem;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 1px solid rgba(150, 109, 160, 0.2);
+        }
+
+        .suggest-item {
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-align: left;
+            color: #4a3f5a;
+            border-bottom: 1px solid #f3eff5;
+        }
+
+        .suggest-item:hover {
+            background-color: #f3eaf5;
+            color: #7e528b;
+        }
+
+        /* Disco Musical Flotante en la esquina */
+        .music-disk-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #4d3356 30%, #1a0c20 100%);
+            border: 2px solid #966da0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 10px rgba(150, 109, 160, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-disk-btn.playing {
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Canvas para destellos de fondo */
+        #sparkleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Animación de flecha indicadora */
+        .scroll-down-arrow {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+            animation: bounce 2s infinite;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+            40% { transform: translate(-50%, -12px); }
+            60% { transform: translate(-50%, -6px); }
+        }
     </style>
 </head>
 <body class="container-snap" id="bodySnap">
 
-    <audio id="audioTrack" loop>
+    <!-- Audio de la invitación -->
+    <audio id="audioTrack" loop preload="auto">
         <source src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/Chayanne%2C%20Danna%20Paola%20-%20Veo%20en%20ti%20la%20luz%20(De%20EnredadosVideo%20Oficial).mp3" type="audio/mpeg">
     </audio>
 
-    <section class="page" id="welcomePage" style="background-color: #966da0;">
-        <div class="card">
-            <div class="nombre-quince">Daniela Valentina</div>
-            <h2 class="text-lg font-bold mb-1">Mis XV Años</h2>
-            <p class="text-xs italic">Escribe tu nombre para abrir la invitación</p>
-            <input type="text" id="nameInput" placeholder="Tu nombre...">
-            <button onclick="iniciarSesion()" class="mt-3 w-full btn-lila font-bold">Entrar</button>
+    <!-- Canvas interactivo para el efecto de polvo de estrellas -->
+    <canvas id="sparkleCanvas"></canvas>
+
+    <!-- Toast de Notificación Integrado (Reemplazo de alert) -->
+    <div id="toastNotification" class="fixed top-5 left-1/2 -translate-x-1/2 z-[1000] w-[90%] max-w-[320px] bg-[#2a1333]/95 border-2 border-[#966da0]/50 backdrop-blur-md rounded-xl p-3 text-purple-200 text-center shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-[-20px]">
+        <i class="fa-solid fa-wand-magic-sparkles mr-2 text-[#dfba6b]"></i>
+        <span id="toastMsg">Por favor escribe tu nombre</span>
+    </div>
+
+    <!-- Botón Flotante del Reproductor Musical -->
+    <div id="floatingPlayer" class="music-disk-btn hidden" onclick="toggleAudio()">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <i class="fa-solid fa-music text-[#f3f0f7] text-base"></i>
+            <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-green-500 rounded-full border border-black animate-ping" id="musicPing"></span>
+        </div>
+    </div>
+
+    <!-- PÁGINA 1: Bienvenida e Ingreso con Buscador de Lista -->
+    <section class="page" id="welcomePage" style="background: radial-gradient(circle, #341f3d 0%, #0d0712 100%);">
+        <div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#966da0_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="glass-card z-20 flex flex-col items-center">
+            <div class="w-16 h-16 rounded-full bg-white/40 border-2 border-[#966da0] flex items-center justify-center mb-3 shadow-inner">
+                <i class="fa-solid fa-crown text-3xl text-[#7e528b] drop-shadow-md animate-pulse"></i>
+            </div>
+            
+            <div class="nombre-quince font-accent text-4xl text-[#7e528b] font-bold tracking-wide">Daniela Valentina</div>
+            <h2 class="text-sm tracking-[0.2em] font-sans-serif uppercase text-[#966da0] font-semibold mt-1 mb-4">Mis XV Años</h2>
+            
+            <p class="text-xs font-sans-serif italic text-gray-500 mb-3">Busca tu nombre en la lista para abrir tu invitación mágica</p>
+            
+            <!-- Campo de entrada con buscador inteligente -->
+            <div class="w-full relative">
+                <input type="text" id="nameInput" placeholder="Escribe tu nombre aquí..." class="magic-input font-sans-serif shadow-inner" autocomplete="off">
+                <div id="suggestBox" class="suggest-box absolute left-0 right-0 z-30 mt-1 hidden"></div>
+            </div>
+
+            <!-- Botón de Entrada -->
+            <button onclick="iniciarSesion()" class="mt-4 w-full py-3 btn-magic rounded-xl font-sans-serif text-sm uppercase tracking-wider font-bold">
+                <i class="fa-solid fa-sparkles mr-2"></i>Entrar
+            </button>
+            
+            <p class="text-[10px] text-gray-400 mt-4 font-sans-serif">Recomendamos usar audio para una mejor experiencia ✨</p>
         </div>
     </section>
 
-    <div id="mainContent" class="hidden-sections">
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg" class="page-img"></section>
+    <!-- CONTENIDO DE LA INVITACIÓN -->
+    <div id="mainContent" class="hidden-sections hidden">
         
+        <!-- PÁGINA 2: Rapunzel Portada -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg" class="page-img">
+            <div class="scroll-down-arrow">
+                <div class="flex flex-col items-center text-white/90 drop-shadow-md">
+                    <span class="text-[10px] tracking-widest font-sans-serif uppercase mb-1">Desliza</span>
+                    <i class="fa-solid fa-chevron-down text-lg"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- PÁGINA 3: Reproductor Principal (SIN fondo y un 15% más arriba) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(9).jpg" class="page-img">
-            <div class="absolute inset-0 flex items-center justify-center p-4">
-                <div class="player-container">
-                    <p class="text-xs font-bold truncate mb-2">Veo en ti la luz</p>
-                    <div id="progressBar" onclick="seek(event)"><div id="progress"></div></div>
-                    <div class="controls">
-                        <button onclick="changeTime(-10)" class="icon-btn">
-                            <svg viewBox="0 0 24 24"><path d="M11 19V5l-9 7 9 7m10 0V5l-9 7 9 7z"/></svg>
+            
+            <!-- Reproductor 100% transparente y posicionado 15% más arriba (bottom-[27%]) -->
+            <div class="absolute bottom-[27%] left-1/2 -translate-x-1/2 w-[85%] max-w-[300px] text-center z-20">
+                <div class="player-container w-full mx-auto px-4">
+                    <!-- Barra de progreso -->
+                    <div id="progressBar" class="relative bg-white/40 h-1.5 rounded-full cursor-pointer shadow-sm animate-pulse" onclick="seek(event)">
+                        <div id="progress" class="bg-[#966da0] h-full rounded-full transition-all"></div>
+                    </div>
+                    
+                    <!-- Controles de música en tonos Lila -->
+                    <div class="controls flex justify-center items-center gap-8 mt-4 drop-shadow-md">
+                        <button onclick="changeTime(-10)" class="text-[#966da0] hover:text-[#a881b4] active:scale-90 transition-transform">
+                            <i class="fa-solid fa-backward-step text-2xl"></i>
                         </button>
-                        <button onclick="toggleAudio()" id="playPauseBtn" class="play-btn">
-                            <svg id="iconStatus" viewBox="0 0 24 24"><path id="pathStatus" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        
+                        <button onclick="toggleAudio()" id="playPauseBtn" class="w-12 h-12 rounded-full bg-[#966da0] flex items-center justify-center text-white text-xl hover:bg-[#7e528b] active:scale-90 transition-all shadow-lg">
+                            <i id="btnPlayIcon" class="fa-solid fa-pause"></i>
                         </button>
-                        <button onclick="changeTime(10)" class="icon-btn">
-                            <svg viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+                        
+                        <button onclick="changeTime(10)" class="text-[#966da0] hover:text-[#a881b4] active:scale-90 transition-transform">
+                            <i class="fa-solid fa-forward-step text-2xl"></i>
                         </button>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(10).jpg" class="page-img">
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-4">
-                <div id="timer" class="timer-container"></div>
+
+            <div class="scroll-down-arrow">
+                <i class="fa-solid fa-chevron-down text-[#966da0] text-lg"></i>
             </div>
         </section>
 
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM.jpeg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(11).jpg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.08%20PM%20(1).jpeg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(3).jpg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(3).jpeg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" class="page-img"></section>
+        <!-- PÁGINA 4: Cuenta Regresiva Mágica (Horizontal y en tonos lilas, sin textos descriptivos) -->
         <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(5).jpg" class="page-img">
-            <div class="absolute inset-0 flex items-end justify-center pb-20"><a href="https://maps.google.com" target="_blank" class="btn-ubicacion">Ver Ubicación</a></div>
-        </section>
-        <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(6).jpg" class="page-img">
-            <div class="absolute inset-0 flex items-center justify-center"><a href="https://maps.google.com" target="_blank" class="btn-ubicacion">Ver Ubicación</a></div>
-        </section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(1).jpeg" class="page-img"></section>
-        <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(15).jpg" class="page-img">
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <div class="card" id="rsvpContainer">
-                    <h2 class="text-lg font-bold">Confirmar Asistencia</h2>
-                    <p id="msg" class="mt-1 text-sm"></p>
-                    <div id="options" class="mt-2"></div>
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(10).jpg" class="page-img">
+            
+            <div class="timer-wrapper absolute top-[28%] w-full flex flex-col items-center">
+                <div id="timer" class="timer-container flex flex-row gap-3 justify-center">
+                    <!-- Generado dinámicamente: horizontal y en lila -->
                 </div>
             </div>
+
+            <div class="scroll-down-arrow">
+                <i class="fa-solid fa-chevron-down text-white/80 text-lg"></i>
+            </div>
         </section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(16).jpg" class="page-img"></section>
-        <section class="page"><img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(17).jpg" class="page-img"></section>
+
+        <!-- PÁGINA 5: Galería 1 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM.jpeg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+        
+        <!-- PÁGINA 6: Galería 2 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(11).jpg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+        
+        <!-- PÁGINA 7: Galería 3 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.08%20PM%20(1).jpeg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+        
+        <!-- PÁGINA 8: Galería 4 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(3).jpg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+        
+        <!-- PÁGINA 9: Galería 5 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(3).jpeg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+        
+        <!-- PÁGINA 10: Galería 6 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+
+        <!-- PÁGINA 11: Ceremonia Religiosa (Sin recuadros, solo botón Lila) -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(5).jpg" class="page-img">
+            
+            <div class="absolute bottom-[16%] inset-x-0 flex flex-col items-center px-4">
+                <a href="https://www.google.com/maps/place/Rector%C3%ADa+de+la+Sagrada+Familia/data=!4m2!3m1!1s0x0:0x8e3bdd0366914147?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-8 py-3.5 rounded-full font-sans-serif text-sm tracking-wider uppercase shadow-xl flex items-center gap-2">
+                    <i class="fa-solid fa-church"></i> Ver Ubicación Ceremonia
+                </a>
+            </div>
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+
+        <!-- PÁGINA 12: Salón de Recepción (Sin recuadros, solo botón Lila) -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(6).jpg" class="page-img">
+            
+            <div class="absolute bottom-[16%] inset-x-0 flex flex-col items-center px-4">
+                <a href="https://www.google.com/maps/place/Provenza+Sal%C3%B3n+de+Eventos/data=!4m2!3m1!1s0x0:0xe31561cf7ec391d?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-8 py-3.5 rounded-full font-sans-serif text-sm tracking-wider uppercase shadow-xl flex items-center gap-2">
+                    <i class="fa-solid fa-wine-glass"></i> Ver Ubicación Recepción
+                </a>
+            </div>
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+
+        <!-- PÁGINAS ADICIONALES DE GALERÍA -->
+        <!-- PÁGINA 13: Galería 7 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(1).jpeg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+        
+        <!-- PÁGINA 14: Galería 8 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(18).jpg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+
+        <!-- PÁGINA 15: Galería 9 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.08%20PM.jpeg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+
+        <!-- PÁGINA 16: Confirmación de Asistencia sobre la imagen de pases (Totalmente transparente, sin fondo de tarjeta) -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(15).jpg" class="page-img">
+            
+            <!-- Contenedor 100% transparente superpuesto -->
+            <div class="absolute inset-0 flex flex-col items-center justify-end pb-28 px-6 text-center z-20">
+                <div class="w-full max-w-[340px] flex flex-col items-center">
+                    
+                    <!-- Mensaje dinámico de pases con fondo semi-traslúcido muy sutil solo para legibilidad -->
+                    <p id="msg" class="font-sans-serif text-sm font-semibold leading-relaxed mb-6 text-[#4a3f5a] bg-white/85 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"></p>
+                    
+                    <!-- Botón de Confirmación Único (Google Forms) -->
+                    <div id="options" class="w-full flex flex-col gap-3">
+                        <!-- Se generará dinámicamente con JS apuntando únicamente al Form -->
+                    </div>
+                    
+                    <p class="text-[11px] text-[#4a3f5a] font-bold mt-4 font-sans-serif italic bg-white/70 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
+                        Confirmar asistencia antes del 15 de Julio de 2026
+                    </p>
+                </div>
+            </div>
+            
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+
+        <!-- PÁGINAS FINALES DE GALERÍA -->
+        <!-- PÁGINA 17: Galería 10 -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(16).jpg" class="page-img">
+            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
+        </section>
+
+        <!-- PÁGINA 18 (FINAL): Despedida (Solo imagen, limpia y libre de textos) -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(17).jpg" class="page-img">
+        </section>
     </div>
 
     <script>
+        // Fecha del evento
         const eventDate = new Date("2026-08-01T18:00:00").getTime();
+        
+        // Elementos interactivos
         const audio = document.getElementById('audioTrack');
         const progress = document.getElementById('progress');
-        const pathStatus = document.getElementById('pathStatus');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const btnPlayIcon = document.getElementById('btnPlayIcon');
+        const floatingPlayer = document.getElementById('floatingPlayer');
+        const musicPing = document.getElementById('musicPing');
+        const nameInput = document.getElementById('nameInput');
+        const suggestBox = document.getElementById('suggestBox');
 
-        audio.addEventListener('timeupdate', () => {
-            const pct = (audio.currentTime / audio.duration) * 100;
-            progress.style.width = pct + '%';
+        // Base de datos de invitados
+        const lista = [
+            { nombre: "JUAN OCAMPO", pases: 2 },
+            { nombre: "GIBRAN ESCOBAR", pases: 2 },
+            { nombre: "ALMA OCAMPO", pases: 2 },
+            { nombre: "DANIEL MACIAS", pases: 2 },
+            { nombre: "HENRRY OCAMPO", pases: 6 },
+            { nombre: "BRANDON OCAMPO", pases: 2 },
+            { nombre: "MARIO OCAMPO", pases: 7 },
+            { nombre: "CLEOTILDE OCAMPO", pases: 2 },
+            { nombre: "JANETH OCAMPO", pases: 4 },
+            { nombre: "JULIA OCAMPO", pases: 1 },
+            { nombre: "NAYELI OCAMPO", pases: 1 },
+            { nombre: "CARMEN OCAMPO", pases: 2 },
+            { nombre: "RODRIGO PALMA", pases: 7 },
+            { nombre: "GABRIELA OCAMPO", pases: 2 },
+            { nombre: "JULIAN MIRANDA", pases: 2 },
+            { nombre: "RUBEN LOPEZ", pases: 3 },
+            { nombre: "GUADALUPE MIRANDA", pases: 4 },
+            { nombre: "GUILLERMO MIRANDA", pases: 2 },
+            { nombre: "JAVIER MIRANDA", pases: 2 },
+            { nombre: "RICARDO MIRANDA", pases: 2 },
+            { nombre: "SANDRA MIRANDA", pases: 3 },
+            { nombre: "JUAN MIRANDA", pases: 4 },
+            { nombre: "JORGE SERRANO", pases: 3 },
+            { nombre: "ARTURO MIRANDA", pases: 3 },
+            { nombre: "DIEGO ESCOBAR", pases: 2 },
+            { nombre: "ALBERTO MIRANDA", pases: 2 },
+            { nombre: "ANTONIO ARRIAGA", pases: 3 },
+            { nombre: "EDSON MIRANDA", pases: 2 },
+            { nombre: "JESSIE MIRANDA", pases: 2 },
+            { nombre: "FELICIANO MIRANDA", pases: 6 },
+            { nombre: "SALVADOR MIRANDA", pases: 2 },
+            { nombre: "PAULINA SERRANO", pases: 2 },
+            { nombre: "VIVIANA ABARCA", pases: 3 },
+            { nombre: "FERNANDO ZEPEDA", pases: 4 },
+            { nombre: "FIDEL ANGUIANO", pases: 5 },
+            { nombre: "MARIA VALENZUELA", pases: 3 },
+            { nombre: "LILIANA CARDOSO", pases: 2 },
+            { nombre: "FRANCEZCO MARTINEZ", pases: 2 },
+            { nombre: "ARTURO SERRANO", pases: 2 },
+            { nombre: "ANTONIO MALDONADO", pases: 2 },
+            { nombre: "EDGAR GARCIA", pases: 2 },
+            { nombre: "LINO GARCIA", pases: 2 },
+            { nombre: "SANDRA LUZ GARCIA", pases: 1 },
+            { nombre: "EDUARDO GARCIA", pases: 3 },
+            { nombre: "RAUL SANCHEZ", pases: 3 },
+            { nombre: "VERONICA GARCIA", pases: 5 },
+            { nombre: "OSCAR ALVAREZ", pases: 2 },
+            { nombre: "MIGUEL ZARATE", pases: 4 },
+            { nombre: "JULIO AGMIR", pases: 4 },
+            { nombre: "ADRIANA", pases: 2 },
+            { nombre: "MAYRA MORALES", pases: 3 },
+            { nombre: "DANIELA", pases: 1 },
+            { nombre: "CAMILA RAFA", pases: 1 },
+            { nombre: "VANESSA", pases: 1 },
+            { nombre: "ADAMARIS", pases: 1 },
+            { nombre: "PAOLA", pases: 1 },
+            { nombre: "ABIGAIL", pases: 1 },
+            { nombre: "IAN", pases: 1 },
+            { nombre: "SANTIAGO", pases: 1 },
+            { nombre: "REGINA", pases: 1 },
+            { nombre: "WINNET", pases: 1 }
+        ];
+
+        // Función del buscador autocompletable inteligente
+        nameInput.addEventListener('input', () => {
+            const query = nameInput.value.toUpperCase();
+            suggestBox.innerHTML = '';
+            
+            if (!query) {
+                suggestBox.classList.add('hidden');
+                return;
+            }
+            
+            const matches = lista.filter(invitado => 
+                invitado.nombre.toUpperCase().includes(query)
+            );
+            
+            if (matches.length > 0) {
+                suggestBox.classList.remove('hidden');
+                matches.slice(0, 4).forEach(invitado => {
+                    const div = document.createElement('div');
+                    div.className = 'suggest-item font-sans-serif text-sm font-medium';
+                    div.innerHTML = `<i class="fa-solid fa-star text-xs text-[#966da0] mr-2"></i>${invitado.nombre}`;
+                    div.addEventListener('click', () => {
+                        nameInput.value = invitado.nombre;
+                        suggestBox.classList.add('hidden');
+                    });
+                    suggestBox.appendChild(div);
+                });
+            } else {
+                suggestBox.classList.add('hidden');
+            }
         });
+
+        // Cerrar el buscador al hacer clic afuera
+        document.addEventListener('click', (e) => {
+            if (e.target !== nameInput && e.target !== suggestBox) {
+                suggestBox.classList.add('hidden');
+            }
+        });
+
+        // Reemplazo del system Alert
+        function showNotification(text) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = text;
+            
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3500);
+        }
+
+        // Control de entrada de la sesión
+        function iniciarSesion() {
+            const nombreIngresado = nameInput.value.trim().toUpperCase();
+            
+            if(!nombreIngresado) {
+                showNotification("Por favor ingresa tu nombre de invitado.");
+                return;
+            }
+
+            const inv = lista.find(i => i.nombre.toUpperCase() === nombreIngresado);
+            
+            if(inv) {
+                const welcome = document.getElementById('welcomePage');
+                welcome.style.transition = 'opacity 0.8s ease';
+                welcome.style.opacity = '0';
+                
+                setTimeout(() => {
+                    welcome.style.display = 'none';
+                    const main = document.getElementById('mainContent');
+                    main.classList.remove('hidden-sections', 'hidden');
+                    
+                    document.getElementById('bodySnap').style.overflowY = 'auto';
+                    
+                    // Iniciar audio automáticamente tras interacción
+                    audio.play().then(() => {
+                        updateMusicUI(true);
+                    }).catch(err => {
+                        console.log("Audio play preventivo");
+                        updateMusicUI(false);
+                    });
+
+                    floatingPlayer.classList.remove('hidden');
+                    
+                    // Configuración del mensaje e invitaciones pases asignados
+                    const textPases = inv.pases === 1 ? "pase personal" : `pases en tu honor`;
+                    document.getElementById('msg').innerHTML = `¡Hola <strong class="text-purple-900">${inv.nombre}</strong>!<br>Nos encantaría contar con tu presencia. Hemos reservado <span class="bg-[#966da0] text-white px-2 py-0.5 rounded-full font-bold">${inv.pases}</span> ${textPases}.`;
+                    
+                    const container = document.getElementById('options');
+                    container.innerHTML = '';
+                    
+                    // Botón ÚNICO de Google Forms para la confirmación oficial
+                    const btnForm = document.createElement('a');
+                    btnForm.className = "btn-magic w-full text-center py-3.5 rounded-full font-semibold text-sm tracking-wide flex items-center justify-center gap-2 font-sans-serif shadow-xl transition-all active:scale-95";
+                    btnForm.innerHTML = `<i class="fa-solid fa-file-signature"></i> Confirmar Asistencia`;
+                    btnForm.href = "https://docs.google.com/forms/d/e/1FAIpQLSed3EoKIgSgmdwkQvF5e5vvGznDG_oqXsJXY1tiNfcXOVKrTw/viewform";
+                    btnForm.target = "_blank";
+                    
+                    container.appendChild(btnForm);
+
+                }, 800);
+                
+            } else { 
+                showNotification("No encontramos tu nombre en la lista de invitados. Revisa la ortografía."); 
+            }
+        }
+
+        // Actualizaciones de reproducción de audio
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = pct + '%';
+            }
+        });
+
+        function updateMusicUI(isPlaying) {
+            if (isPlaying) {
+                if (btnPlayIcon) {
+                    btnPlayIcon.classList.remove('fa-play');
+                    btnPlayIcon.classList.add('fa-pause');
+                }
+                floatingPlayer.classList.add('playing');
+                musicPing.classList.remove('hidden');
+            } else {
+                if (btnPlayIcon) {
+                    btnPlayIcon.classList.remove('fa-pause');
+                    btnPlayIcon.classList.add('fa-play');
+                }
+                floatingPlayer.classList.remove('playing');
+                musicPing.classList.add('hidden');
+            }
+        }
+
+        function toggleAudio() {
+            if (audio.paused) { 
+                audio.play(); 
+                updateMusicUI(true);
+            } else { 
+                audio.pause(); 
+                updateMusicUI(false);
+            }
+        }
 
         function seek(e) {
             const width = document.getElementById('progressBar').clientWidth;
             audio.currentTime = (e.offsetX / width) * audio.duration;
         }
 
-        function changeTime(sec) { audio.currentTime += sec; }
+        function changeTime(sec) { 
+            audio.currentTime += sec; 
+        }
 
         function updateTimer() {
             const now = new Date().getTime();
             const diff = eventDate - now;
+            
             const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
             const hours = Math.max(0, Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
             const mins = Math.max(0, Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
             const secs = Math.max(0, Math.floor((diff % (1000 * 60)) / 1000));
-            document.getElementById('timer').innerHTML = 
-                `<div class="timer-circle"><span class="timer-val">${days}</span><span class="timer-label">días</span></div>` +
-                `<div class="timer-circle"><span class="timer-val">${hours}</span><span class="timer-label">hrs</span></div>` +
-                `<div class="timer-circle"><span class="timer-val">${mins}</span><span class="timer-label">min</span></div>` +
-                `<div class="timer-circle"><span class="timer-val">${secs}</span><span class="timer-label">seg</span></div>`;
+            
+            const timerContainer = document.getElementById('timer');
+            if (timerContainer) {
+                timerContainer.innerHTML = 
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${days}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">días</span></div>` +
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${hours}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">hrs</span></div>` +
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${mins}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">min</span></div>` +
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${secs}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">seg</span></div>`;
+            }
         }
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        function toggleAudio() {
-            if (audio.paused) { 
-                audio.play(); 
-                pathStatus.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); 
-            } else { 
-                audio.pause(); 
-                pathStatus.setAttribute('d', 'M8 5v14l11-7z'); 
+        // Generador de destellos/polvo de estrellas mágico interactivo
+        const canvas = document.getElementById("sparkleCanvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1.2 - 0.6;
+                this.speedY = Math.random() * -1.2 - 0.4;
+                this.alpha = 1;
+                this.color = color || `hsla(${Math.random() * 40 + 260}, 80%, 75%, `;
+                this.decay = Math.random() * 0.012 + 0.005;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + this.alpha + ')';
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.alpha -= this.decay;
             }
         }
 
-        const lista = [ { nombre: "JUAN OCAMPO", pases: 2 }, { nombre: "GIBRAN ESCOBAR", pases: 2 }, { nombre: "ALMA OCAMPO", pases: 2 }, { nombre: "DANIEL MACIAS", pases: 2 }, { nombre: "HENRRY OCAMPO", pases: 6 }, { nombre: "BRANDON OCAMPO", pases: 2 }, { nombre: "MARIO OCAMPO", pases: 7 }, { nombre: "CLEOTILDE OCAMPO", pases: 2 }, { nombre: "JANETH OCAMPO", pases: 4 }, { nombre: "JULIA OCAMPO", pases: 1 }, { nombre: "NAYELI OCAMPO", pases: 1 }, { nombre: "CARMEN OCAMPO", pases: 2 }, { nombre: "RODRIGO PALMA", pases: 7 }, { nombre: "GABRIELA OCAMPO", pases: 2 }, { nombre: "JULIAN MIRANDA", pases: 2 }, { nombre: "RUBEN LOPEZ", pases: 3 }, { nombre: "GUADALUPE MIRANDA", pases: 4 }, { nombre: "GUILLERMO MIRANDA", pases: 2 }, { nombre: "JAVIER MIRANDA", pases: 2 }, { nombre: "RICARDO MIRANDA", pases: 2 }, { nombre: "SANDRA MIRANDA", pases: 3 }, { nombre: "JUAN MIRANDA", pases: 4 }, { nombre: "JORGE SERRANO", pases: 3 }, { nombre: "ARTURO MIRANDA", pases: 3 }, { nombre: "DIEGO ESCOBAR", pases: 2 }, { nombre: "ALBERTO MIRANDA", pases: 2 }, { nombre: "ANTONIO ARRIAGA", pases: 3 }, { nombre: "EDSON MIRANDA", pases: 2 }, { nombre: "JESSIE MIRANDA", pases: 2 }, { nombre: "FELICIANO MIRANDA", pases: 6 }, { nombre: "SALVADOR MIRANDA", pases: 2 }, { nombre: "PAULINA SERRANO", pases: 2 }, { nombre: "VIVIANA ABARCA", pases: 3 }, { nombre: "FERNANDO ZEPEDA", pases: 4 }, { nombre: "FIDEL ANGUIANO", pases: 5 }, { nombre: "MARIA VALENZUELA", pases: 3 }, { nombre: "LILIANA CARDOSO", pases: 2 }, { nombre: "FRANCEZCO MARTINEZ", pases: 2 }, { nombre: "ARTURO SERRANO", pases: 2 }, { nombre: "ANTONIO MALDONADO", pases: 2 }, { nombre: "EDGAR GARCIA", pases: 2 }, { nombre: "LINO GARCIA", pases: 2 }, { nombre: "SANDRA LUZ GARCIA", pases: 1 }, { nombre: "EDUARDO GARCIA", pases: 3 }, { nombre: "RAUL SANCHEZ", pases: 3 }, { nombre: "VERONICA GARCIA", pases: 5 }, { nombre: "OSCAR ALVAREZ", pases: 2 }, { nombre: "MIGUEL ZARATE", pases: 4 }, { nombre: "JULIO AGMIR", pases: 4 }, { nombre: "ADRIANA", pases: 2 }, { nombre: "MAYRA MORALES", pases: 3 }, { nombre: "DANIELA", pases: 1 }, { nombre: "CAMILA RAFA", pases: 1 }, { nombre: "VANESSA", pases: 1 }, { nombre: "ADAMARIS", pases: 1 }, { nombre: "PAOLA", pases: 1 }, { nombre: "ABIGAIL", pases: 1 }, { nombre: "IAN", pases: 1 }, { nombre: "SANTIAGO", pases: 1 }, { nombre: "REGINA", pases: 1 }, { nombre: "WINNET", pases: 1 } ];
+        // Crear efectos de estela mágica al mover el puntero o tocar
+        window.addEventListener("pointermove", (e) => {
+            const isPurple = Math.random() > 0.5;
+            const hue = isPurple ? `hsla(${Math.random() * 40 + 265}, 80%, 75%, ` : `hsla(${Math.random() * 15 + 40}, 85%, 65%, `;
+            for(let i = 0; i < 2; i++) {
+                particles.push(new Particle(e.clientX, e.clientY, hue));
+            }
+        });
 
-        function iniciarSesion() {
-            const nombreIngresado = document.getElementById('nameInput').value.trim();
-            const inv = lista.find(i => i.nombre.toUpperCase() === nombreIngresado.toUpperCase());
-            if(inv) {
-                document.getElementById('welcomePage').style.display = 'none';
-                document.getElementById('mainContent').classList.remove('hidden-sections');
-                document.getElementById('bodySnap').style.overflowY = 'auto';
-                audio.play();
-                document.getElementById('msg').innerText = `Hola ${inv.nombre}, tienes ${inv.pases} pases.`;
-                const btn = document.createElement('a');
-                btn.className = "btn-lila inline-block font-bold mt-2";
-                btn.innerText = "Confirmar";
-                btn.href = `https://docs.google.com/forms/d/e/1FAIpQLSed3EoKIgSgmdwkQvF5e5vvGznDG_oqXsJXY1tiNfcXOVKrTw/viewform?usp=pp_url&entry.1093125026=${encodeURIComponent(inv.nombre)}&entry.1396264977=${inv.pases}`;
-                btn.target = "_blank";
-                document.getElementById('options').appendChild(btn);
-            } else { alert("Nombre no encontrado."); }
+        // Partículas automáticas en el ambiente
+        function addAmbientParticles() {
+            if (particles.length < 40) {
+                const x = Math.random() * canvas.width;
+                const y = canvas.height + 10;
+                const isPurple = Math.random() > 0.5;
+                const hue = isPurple ? `hsla(${Math.random() * 40 + 265}, 70%, 70%, ` : `hsla(${Math.random() * 15 + 40}, 75%, 60%, `;
+                particles.push(new Particle(x, y, hue));
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            addAmbientParticles();
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                if (particles[i].alpha <= 0) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.onload = function () {
+            animateParticles();
         }
     </script>
 </body>
