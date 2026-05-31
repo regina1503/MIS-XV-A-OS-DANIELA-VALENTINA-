@@ -86,7 +86,7 @@
             transition: all 0.4s ease;
         }
 
-        /* Botón Lila Mágico para ubicaciones y accesos */
+        /* Botón Lila Mágico para ubicaciones, accesos y mesas de regalos */
         .btn-magic {
             background: linear-gradient(135deg, #a881b4 0%, #7e528b 100%);
             color: white;
@@ -123,8 +123,8 @@
 
         /* Círculos Lila del Temporizador Horizontal */
         .timer-circle {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             border: 2px solid #966da0;
             border-radius: 50%;
             display: flex;
@@ -234,7 +234,7 @@
     <!-- Canvas interactivo para el efecto de polvo de estrellas -->
     <canvas id="sparkleCanvas"></canvas>
 
-    <!-- Toast de Notificación Integrado (Reemplazo de alert) -->
+    <!-- Toast de Notificación Integrado -->
     <div id="toastNotification" class="fixed top-5 left-1/2 -translate-x-1/2 z-[1000] w-[90%] max-w-[320px] bg-[#2a1333]/95 border-2 border-[#966da0]/50 backdrop-blur-md rounded-xl p-3 text-purple-200 text-center shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-[-20px]">
         <i class="fa-solid fa-wand-magic-sparkles mr-2 text-[#dfba6b]"></i>
         <span id="toastMsg">Por favor escribe tu nombre</span>
@@ -280,7 +280,7 @@
     <!-- CONTENIDO DE LA INVITACIÓN -->
     <div id="mainContent" class="hidden-sections hidden">
         
-        <!-- PÁGINA 2: Rapunzel Portada -->
+        <!-- PÁGINA 2: Rapunzel Portada (Única con indicador de deslizar) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg" class="page-img">
             <div class="scroll-down-arrow">
@@ -291,12 +291,12 @@
             </div>
         </section>
 
-        <!-- PÁGINA 3: Reproductor Principal (SIN fondo y un 15% más arriba) -->
+        <!-- PÁGINA 3: Reproductor Principal (Sin textos, lila minimalista y elevado) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(9).jpg" class="page-img">
             
-            <!-- Reproductor 100% transparente y posicionado 15% más arriba (bottom-[27%]) -->
-            <div class="absolute bottom-[27%] left-1/2 -translate-x-1/2 w-[85%] max-w-[300px] text-center z-20">
+            <!-- Reproductor 100% transparente y posicionado un 20% más arriba (bottom-[47%]) -->
+            <div class="absolute bottom-[47%] left-1/2 -translate-x-1/2 w-[85%] max-w-[300px] text-center z-20">
                 <div class="player-container w-full mx-auto px-4">
                     <!-- Barra de progreso -->
                     <div id="progressBar" class="relative bg-white/40 h-1.5 rounded-full cursor-pointer shadow-sm animate-pulse" onclick="seek(event)">
@@ -319,139 +319,133 @@
                     </div>
                 </div>
             </div>
-
-            <div class="scroll-down-arrow">
-                <i class="fa-solid fa-chevron-down text-[#966da0] text-lg"></i>
-            </div>
         </section>
 
-        <!-- PÁGINA 4: Cuenta Regresiva Mágica (Horizontal y en tonos lilas, sin textos descriptivos) -->
+        <!-- PÁGINA 4: Cuenta Regresiva Mágica (Subido al top-[26%] y círculos de 60px) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(10).jpg" class="page-img">
             
-            <div class="timer-wrapper absolute top-[28%] w-full flex flex-col items-center">
-                <div id="timer" class="timer-container flex flex-row gap-3 justify-center">
-                    <!-- Generado dinámicamente: horizontal y en lila -->
+            <div class="timer-wrapper absolute top-[26%] w-full flex flex-col items-center">
+                <div id="timer" class="timer-container flex flex-row gap-2.5 justify-center">
+                    <!-- Generado dinámicamente -->
                 </div>
-            </div>
-
-            <div class="scroll-down-arrow">
-                <i class="fa-solid fa-chevron-down text-white/80 text-lg"></i>
             </div>
         </section>
 
         <!-- PÁGINA 5: Galería 1 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM.jpeg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
         
         <!-- PÁGINA 6: Galería 2 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(11).jpg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
         
         <!-- PÁGINA 7: Galería 3 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.08%20PM%20(1).jpeg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
         
         <!-- PÁGINA 8: Galería 4 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(3).jpg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
         
         <!-- PÁGINA 9: Galería 5 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(3).jpeg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
         
         <!-- PÁGINA 10: Galería 6 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
 
-        <!-- PÁGINA 11: Ceremonia Religiosa (Sin recuadros, solo botón Lila) -->
+        <!-- PÁGINA 11: Ceremonia Religiosa (Ubicación en lila, rebajado un 5%, bottom-[13%]) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(5).jpg" class="page-img">
             
-            <div class="absolute bottom-[16%] inset-x-0 flex flex-col items-center px-4">
-                <a href="https://www.google.com/maps/place/Rector%C3%ADa+de+la+Sagrada+Familia/data=!4m2!3m1!1s0x0:0x8e3bdd0366914147?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-8 py-3.5 rounded-full font-sans-serif text-sm tracking-wider uppercase shadow-xl flex items-center gap-2">
+            <div class="absolute bottom-[13%] left-1/2 -translate-x-1/2 w-max flex flex-col items-center px-4 z-20">
+                <a href="https://www.google.com/maps/place/Rector%C3%ADa+de+la+Sagrada+Familia/data=!4m2!3m1!1s0x0:0x8e3bdd0366914147?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-[26px] py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
                     <i class="fa-solid fa-church"></i> Ver Ubicación Ceremonia
                 </a>
             </div>
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
 
-        <!-- PÁGINA 12: Salón de Recepción (Sin recuadros, solo botón Lila) -->
+        <!-- PÁGINA 12: Salón de Recepción (Ubicación en lila, rebajado un 5%, bottom-[36%]) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(6).jpg" class="page-img">
             
-            <div class="absolute bottom-[16%] inset-x-0 flex flex-col items-center px-4">
-                <a href="https://www.google.com/maps/place/Provenza+Sal%C3%B3n+de+Eventos/data=!4m2!3m1!1s0x0:0xe31561cf7ec391d?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-8 py-3.5 rounded-full font-sans-serif text-sm tracking-wider uppercase shadow-xl flex items-center gap-2">
+            <div class="absolute bottom-[36%] left-1/2 -translate-x-1/2 w-max flex flex-col items-center px-4 z-20">
+                <a href="https://www.google.com/maps/place/Provenza+Sal%C3%B3n+de+Eventos/data=!4m2!3m1!1s0x0:0xe31561cf7ec391d?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-[26px] py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
                     <i class="fa-solid fa-wine-glass"></i> Ver Ubicación Recepción
                 </a>
             </div>
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
 
-        <!-- PÁGINAS ADICIONALES DE GALERÍA -->
-        <!-- PÁGINA 13: Galería 7 -->
+        <!-- PÁGINA 13: Galería 7 (Limpia, sin botones) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(1).jpeg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
         
-        <!-- PÁGINA 14: Galería 8 -->
+        <!-- PÁGINA 14: Galería 8 + Acceso a Mesas de Regalos (Liverpool & Amazon) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(18).jpg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
-        </section>
-
-        <!-- PÁGINA 15: Galería 9 -->
-        <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.08%20PM.jpeg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
-        </section>
-
-        <!-- PÁGINA 16: Confirmación de Asistencia sobre la imagen de pases (Totalmente transparente, sin fondo de tarjeta) -->
-        <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(15).jpg" class="page-img">
             
-            <!-- Contenedor 100% transparente superpuesto -->
-            <div class="absolute inset-0 flex flex-col items-center justify-end pb-28 px-6 text-center z-20">
-                <div class="w-full max-w-[340px] flex flex-col items-center">
-                    
-                    <!-- Mensaje dinámico de pases con fondo semi-traslúcido muy sutil solo para legibilidad -->
-                    <p id="msg" class="font-sans-serif text-sm font-semibold leading-relaxed mb-6 text-[#4a3f5a] bg-white/85 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-lg"></p>
-                    
-                    <!-- Botón de Confirmación Único (Google Forms) -->
-                    <div id="options" class="w-full flex flex-col gap-3">
-                        <!-- Se generará dinámicamente con JS apuntando únicamente al Form -->
-                    </div>
-                    
-                    <p class="text-[11px] text-[#4a3f5a] font-bold mt-4 font-sans-serif italic bg-white/70 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
-                        Confirmar asistencia antes del 15 de Julio de 2026
-                    </p>
-                </div>
+            <div class="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[85%] max-w-[280px] flex flex-col items-center gap-3 z-20">
+                <!-- Botón Liverpool -->
+                <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52014189" target="_blank" class="btn-magic w-full py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-gift"></i> Mesa Liverpool
+                </a>
+                <!-- Botón Amazon -->
+                <a href="https://www.amazon.com.mx/registries/gl/guest-view/239NTEDNUIXKT?ref_=cm_sw_r_apin_ggr-subnav-share_0TBVPK8VT8CX8DCGBA3A&language=en-US" target="_blank" class="btn-magic w-full py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
+                    <i class="fa-brands fa-amazon"></i> Mesa Amazon
+                </a>
             </div>
-            
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
 
-        <!-- PÁGINAS FINALES DE GALERÍA -->
-        <!-- PÁGINA 17: Galería 10 -->
+        <!-- PÁGINA 15: Galería 9b -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(2).jpeg" class="page-img">
+        </section>
+
+        <!-- PÁGINA 16: Confirmación de Asistencia sobre la imagen cenicienta (19).jpg (Sin fondo de tarjeta, subido un 15% -> bottom-[32%] y con fecha límite al 20 de Julio) -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(19).jpg" class="page-img">
+            
+            <!-- Contenedor 100% transparente superpuesto elevado un 15% -->
+            <div class="absolute bottom-[32%] left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] flex flex-col items-center text-center z-20">
+                <!-- Mensaje dinámico de pases con fondo traslúcido muy sutil -->
+                <p id="msg" class="font-sans-serif text-xs font-semibold leading-relaxed mb-4 text-[#4a3f5a] bg-white/85 backdrop-blur-md p-3.5 rounded-2xl border border-white/50 shadow-lg w-full"></p>
+                
+                <!-- Botón de Confirmación Único (Google Forms) -->
+                <div id="options" class="w-full flex flex-col gap-3">
+                    <!-- Se generará dinámicamente con JS -->
+                </div>
+                
+                <p class="text-[10.5px] text-[#4a3f5a] font-bold mt-3 font-sans-serif italic bg-white/70 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm w-max">
+                    Confirmar asistencia antes del 20 de Julio de 2026
+                </p>
+            </div>
+        </section>
+
+        <!-- PÁGINA 17: Galería Extra (WhatsApp Image 2026-05-26 at 4.40.09 PM (4).jpeg) -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(4).jpeg" class="page-img">
+        </section>
+
+        <!-- PÁGINA 18: Galería 10 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(16).jpg" class="page-img">
-            <div class="scroll-down-arrow"><i class="fa-solid fa-chevron-down text-white/80 text-lg"></i></div>
         </section>
 
-        <!-- PÁGINA 18 (FINAL): Despedida (Solo imagen, limpia y libre de textos) -->
+        <!-- PÁGINA 19: Galería Extra 2 (Añadida después de la página 18) -->
+        <section class="page">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(2).jpeg" class="page-img">
+        </section>
+
+        <!-- PÁGINA 20 (FINAL): Despedida (Solo imagen, limpia y libre de textos) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(17).jpg" class="page-img">
         </section>
@@ -631,7 +625,7 @@
                     
                     // Botón ÚNICO de Google Forms para la confirmación oficial
                     const btnForm = document.createElement('a');
-                    btnForm.className = "btn-magic w-full text-center py-3.5 rounded-full font-semibold text-sm tracking-wide flex items-center justify-center gap-2 font-sans-serif shadow-xl transition-all active:scale-95";
+                    btnForm.className = "btn-magic w-full text-center py-[11px] rounded-full font-semibold text-[13px] tracking-wide flex items-center justify-center gap-2 font-sans-serif shadow-xl transition-all active:scale-95";
                     btnForm.innerHTML = `<i class="fa-solid fa-file-signature"></i> Confirmar Asistencia`;
                     btnForm.href = "https://docs.google.com/forms/d/e/1FAIpQLSed3EoKIgSgmdwkQvF5e5vvGznDG_oqXsJXY1tiNfcXOVKrTw/viewform";
                     btnForm.target = "_blank";
@@ -690,6 +684,7 @@
             audio.currentTime += sec; 
         }
 
+        // Cuenta regresiva reducida un 5% en escala de fuente y diseño general
         function updateTimer() {
             const now = new Date().getTime();
             const diff = eventDate - now;
@@ -702,10 +697,10 @@
             const timerContainer = document.getElementById('timer');
             if (timerContainer) {
                 timerContainer.innerHTML = 
-                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${days}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">días</span></div>` +
-                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${hours}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">hrs</span></div>` +
-                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${mins}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">min</span></div>` +
-                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-lg font-bold">${secs}</span><span class="timer-label text-[8px] uppercase tracking-wider text-purple-600 font-semibold">seg</span></div>`;
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-base font-bold">${days}</span><span class="timer-label text-[7.5px] uppercase tracking-wider text-purple-600 font-semibold">días</span></div>` +
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-base font-bold">${hours}</span><span class="timer-label text-[7.5px] uppercase tracking-wider text-purple-600 font-semibold">hrs</span></div>` +
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-base font-bold">${mins}</span><span class="timer-label text-[7.5px] uppercase tracking-wider text-purple-600 font-semibold">min</span></div>` +
+                    `<div class="timer-circle font-sans-serif"><span class="timer-val text-base font-bold">${secs}</span><span class="timer-label text-[7.5px] uppercase tracking-wider text-purple-600 font-semibold">seg</span></div>`;
             }
         }
         setInterval(updateTimer, 1000);
