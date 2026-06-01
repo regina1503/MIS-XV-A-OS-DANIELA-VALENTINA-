@@ -167,14 +167,14 @@
             color: #7e528b;
         }
 
-        /* Disco Musical Flotante en la esquina */
+        /* Disco Musical Flotante en la esquina - Reducido 4% (50px) */
         .music-disk-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
             z-index: 999;
-            width: 52px;
-            height: 52px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: radial-gradient(circle, #4d3356 30%, #1a0c20 100%);
             border: 2px solid #966da0;
@@ -291,12 +291,12 @@
             </div>
         </section>
 
-        <!-- PÁGINA 3: Reproductor Principal (Sin textos, lila minimalista y elevado) -->
+        <!-- PÁGINA 3: Reproductor Principal (Sin textos, lila minimalista, elevado y reducido un 4%) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(9).jpg" class="page-img">
             
-            <!-- Reproductor 100% transparente y posicionado un 15% más arriba (bottom-[62%]) -->
-            <div class="absolute bottom-[62%] left-1/2 -translate-x-1/2 w-[85%] max-w-[300px] text-center z-20">
+            <!-- Reproductor 100% transparente y posicionado un 15% más arriba (bottom-[62%]), reducido un 4% de tamaño -->
+            <div class="absolute bottom-[62%] left-1/2 -translate-x-1/2 w-[81%] max-w-[288px] text-center z-20">
                 <div class="player-container w-full mx-auto px-4">
                     <!-- Barra de progreso -->
                     <div id="progressBar" class="relative bg-white/40 h-1.5 rounded-full cursor-pointer shadow-sm animate-pulse" onclick="seek(event)">
@@ -321,7 +321,7 @@
             </div>
         </section>
 
-        <!-- PÁGINA 4: Cuenta Regresiva Mágica (Subido al top-[26%] y círculos de 60px) -->
+        <!-- PÁGINA 4: Cuenta Regresiva Mágica (Subido al top-[26%] y circles de 60px) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(10).jpg" class="page-img">
             
@@ -373,11 +373,11 @@
             </div>
         </section>
 
-        <!-- PÁGINA 12: Salón de Recepción (Ubicación en lila, rebajado un 5%, bottom-[36%]) -->
+        <!-- PÁGINA 12: Salón de Recepción (Ubicación en lila, subido un 2% adicional -> bottom-[40%]) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(6).jpg" class="page-img">
             
-            <div class="absolute bottom-[36%] left-1/2 -translate-x-1/2 w-max flex flex-col items-center px-4 z-20">
+            <div class="absolute bottom-[40%] left-1/2 -translate-x-1/2 w-max flex flex-col items-center px-4 z-20">
                 <a href="https://www.google.com/maps/place/Provenza+Sal%C3%B3n+de+Eventos/data=!4m2!3m1!1s0x0:0xe31561cf7ec391d?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-[26px] py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
                     <i class="fa-solid fa-wine-glass"></i> Ver Ubicación Recepción
                 </a>
@@ -390,10 +390,11 @@
         </section>
         
         <!-- PÁGINA 14: Galería 8 + Acceso a Mesas de Regalos (Liverpool & Amazon) -->
+        <!-- Rediseñados: menos largos, subidos un 5% adicional (bottom-[35%]) y con mayor separación (gap-4) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(18).jpg" class="page-img">
             
-            <div class="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[85%] max-w-[280px] flex flex-col items-center gap-3 z-20">
+            <div class="absolute bottom-[35%] left-1/2 -translate-x-1/2 w-[70%] max-w-[220px] flex flex-col items-center gap-4 z-20">
                 <!-- Botón Liverpool -->
                 <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52014189" target="_blank" class="btn-magic w-full py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
                     <i class="fa-solid fa-gift"></i> Mesa Liverpool
@@ -410,12 +411,13 @@
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(2).jpeg" class="page-img">
         </section>
 
-        <!-- PÁGINA 16: Confirmación de Asistencia sobre la imagen cenicienta (19).jpg (Sin fondo de tarjeta, subido un 15% -> bottom-[32%] y con fecha límite al 20 de Julio) -->
+        <!-- PÁGINA 16: Confirmación de Asistencia sobre la imagen cenicienta (19).jpg -->
+        <!-- Subido un 7% (bottom-[39%]) y menos ancho (w-[80%] max-w-[280px]) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(19).jpg" class="page-img">
             
-            <!-- Contenedor 100% transparente superpuesto elevado un 15% -->
-            <div class="absolute bottom-[32%] left-1/2 -translate-x-1/2 w-[90%] max-w-[340px] flex flex-col items-center text-center z-20">
+            <!-- Contenedor 100% transparente superpuesto elevado y más angosto -->
+            <div class="absolute bottom-[39%] left-1/2 -translate-x-1/2 w-[80%] max-w-[280px] flex flex-col items-center text-center z-20">
                 <!-- Mensaje dinámico de pases con fondo traslúcido muy sutil -->
                 <p id="msg" class="font-sans-serif text-xs font-semibold leading-relaxed mb-4 text-[#4a3f5a] bg-white/85 backdrop-blur-md p-3.5 rounded-2xl border border-white/50 shadow-lg w-full"></p>
                 
@@ -490,7 +492,7 @@
             { nombre: "SANDRA MIRANDA", pases: 3 },
             { nombre: "JUAN MIRANDA", pases: 4 },
             { nombre: "JORGE SERRANO", pases: 3 },
-            { nombre: "ARTURO MIRANDA", pases: 3 },
+            { font_name: "ARTURO MIRANDA", nombre: "ARTURO MIRANDA", pases: 3 },
             { nombre: "DIEGO ESCOBAR", pases: 2 },
             { nombre: "ALBERTO MIRANDA", pases: 2 },
             { nombre: "ANTONIO ARRIAGA", pases: 3 },
@@ -675,6 +677,7 @@
             }
         }
 
+        // Navegación rápida en audio
         function seek(e) {
             const width = document.getElementById('progressBar').clientWidth;
             audio.currentTime = (e.offsetX / width) * audio.duration;
