@@ -3,7 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mis XV Años - Daniela Valentina</title>
+    
+    <!-- Meta tags de Open Graph para previsualizaciones de enlaces (WhatsApp, Facebook, Messenger) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mis xv años Daniela Valentina 💜">
+    <meta property="og:description" content="¡Te invito a celebrar conmigo este día tan mágico e inolvidable! ✨ Encuentra tus pases y ubicaciones aquí.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Meta tags para Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mis xv años Daniela Valentina 💜">
+    <meta name="twitter:description" content="¡Te invito a celebrar conmigo este día tan mágico e inolvidable! ✨ Encuentra tus pases y ubicaciones aquí.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/rapunzel.jpg">
+
+    <!-- Título de la pestaña -->
+    <title>Mis xv años Daniela Valentina 💜</title>
+
     <!-- Tailwind CSS para diseño fluido -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome para iconos -->
@@ -58,7 +75,7 @@
             overflow: hidden;
         }
         
-        /* Imágenes de fondo limpias sin películas transparentes */
+        /* Imágenes de fondo limpias sin películas transparentes ni velos oscuros */
         .page-img {
             width: 100%;
             height: 100%;
@@ -167,7 +184,7 @@
             color: #7e528b;
         }
 
-        /* Disco Musical Flotante en la esquina - Reducido 4% (50px) */
+        /* Disco Musical Flotante en la esquina */
         .music-disk-btn {
             position: fixed;
             bottom: 25px;
@@ -234,16 +251,16 @@
     <!-- Canvas interactivo para el efecto de polvo de estrellas -->
     <canvas id="sparkleCanvas"></canvas>
 
-    <!-- Toast de Notificación Integrado -->
+    <!-- Toast de Notificación Integrado (Reemplazo elegante de alert) -->
     <div id="toastNotification" class="fixed top-5 left-1/2 -translate-x-1/2 z-[1000] w-[90%] max-w-[320px] bg-[#2a1333]/95 border-2 border-[#966da0]/50 backdrop-blur-md rounded-xl p-3 text-purple-200 text-center shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-[-20px]">
         <i class="fa-solid fa-wand-magic-sparkles mr-2 text-[#dfba6b]"></i>
         <span id="toastMsg">Por favor escribe tu nombre</span>
     </div>
 
-    <!-- Botón Flotante del Reproductor Musical -->
+    <!-- Botón Flotante del Reproductor Musical (Reducido un 4%) -->
     <div id="floatingPlayer" class="music-disk-btn hidden" onclick="toggleAudio()">
         <div class="relative w-full h-full flex items-center justify-center">
-            <i class="fa-solid fa-music text-[#f3f0f7] text-base"></i>
+            <i class="fa-solid fa-music text-[#f3f0f7] text-sm"></i>
             <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-green-500 rounded-full border border-black animate-ping" id="musicPing"></span>
         </div>
     </div>
@@ -291,12 +308,12 @@
             </div>
         </section>
 
-        <!-- PÁGINA 3: Reproductor Principal (Sin textos, lila minimalista, elevado y reducido un 4%) -->
+        <!-- PÁGINA 3: Reproductor Principal (Sin textos, lila minimalista y elevado) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(9).jpg" class="page-img">
             
-            <!-- Reproductor 100% transparente y posicionado un 15% más arriba (bottom-[62%]), reducido un 4% de tamaño -->
-            <div class="absolute bottom-[62%] left-1/2 -translate-x-1/2 w-[81%] max-w-[288px] text-center z-20">
+            <!-- Reproductor 100% transparente y posicionado un 15% más arriba (bottom-[62%]) y reducido 4% -->
+            <div class="absolute bottom-[62%] left-1/2 -translate-x-1/2 w-[80%] max-w-[288px] text-center z-20">
                 <div class="player-container w-full mx-auto px-4">
                     <!-- Barra de progreso -->
                     <div id="progressBar" class="relative bg-white/40 h-1.5 rounded-full cursor-pointer shadow-sm animate-pulse" onclick="seek(event)">
@@ -309,7 +326,7 @@
                             <i class="fa-solid fa-backward-step text-2xl"></i>
                         </button>
                         
-                        <button onclick="toggleAudio()" id="playPauseBtn" class="w-12 h-12 rounded-full bg-[#966da0] flex items-center justify-center text-white text-xl hover:bg-[#7e528b] active:scale-90 transition-all shadow-lg">
+                        <button onclick="toggleAudio()" id="playPauseBtn" class="w-11 h-11 rounded-full bg-[#966da0] flex items-center justify-center text-white text-lg hover:bg-[#7e528b] active:scale-90 transition-all shadow-lg">
                             <i id="btnPlayIcon" class="fa-solid fa-pause"></i>
                         </button>
                         
@@ -327,7 +344,7 @@
             
             <div class="timer-wrapper absolute top-[26%] w-full flex flex-col items-center">
                 <div id="timer" class="timer-container flex flex-row gap-2.5 justify-center">
-                    <!-- Generado dinámicamente -->
+                    <!-- Generado dinámicamente en formato horizontal -->
                 </div>
             </div>
         </section>
@@ -362,37 +379,37 @@
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(4).jpg" class="page-img">
         </section>
 
-        <!-- PÁGINA 11: Ceremonia Religiosa (Ubicación en lila, rebajado un 5%, bottom-[13%]) -->
+        <!-- PÁGINA 11: Ceremonia Religiosa (Ubicación en lila, rebajado un 5%, menos ancho, bottom-[13%]) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(5).jpg" class="page-img">
             
             <div class="absolute bottom-[13%] left-1/2 -translate-x-1/2 w-max flex flex-col items-center px-4 z-20">
-                <a href="https://www.google.com/maps/place/Rector%C3%ADa+de+la+Sagrada+Familia/data=!4m2!3m1!1s0x0:0x8e3bdd0366914147?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-[18px] py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-church"></i> Ver Ubicación Ceremonia
+                <a href="https://www.google.com/maps/place/Rector%C3%ADa+de+la+Sagrada+Familia/data=!4m2!3m1!1s0x0:0x8e3bdd0366914147?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-[18px] py-[11px] rounded-full font-sans-serif text-[12.5px] tracking-wide uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-church text-sm"></i> Ver Ubicación Ceremonia
                 </a>
             </div>
         </section>
 
-        <!-- PÁGINA 12: Salón de Recepción (Ubicación en lila, subido un 3% adicional -> bottom-[43%]) -->
+        <!-- PÁGINA 12: Salón de Recepción (Ubicación en lila, subido un 3% a bottom-[43%], menos ancho) -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(6).jpg" class="page-img">
             
             <div class="absolute bottom-[43%] left-1/2 -translate-x-1/2 w-max flex flex-col items-center px-4 z-20">
-                <a href="https://www.google.com/maps/place/Provenza+Sal%C3%B3n+de+Eventos/data=!4m2!3m1!1s0x0:0xe31561cf7ec391d?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-[18px] py-[11px] rounded-full font-sans-serif text-[13px] tracking-wider uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
-                    <i class="fa-solid fa-wine-glass"></i> Ver Ubicación Recepción
+                <a href="https://www.google.com/maps/place/Provenza+Sal%C3%B3n+de+Eventos/data=!4m2!3m1!1s0x0:0xe31561cf7ec391d?sa=X&ved=1t:2428&hl=es-mx&ictx=111" target="_blank" class="btn-magic px-[18px] py-[11px] rounded-full font-sans-serif text-[12.5px] tracking-wide uppercase shadow-xl flex items-center justify-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-wine-glass text-sm"></i> Ver Ubicación Recepción
                 </a>
             </div>
         </section>
 
-        <!-- PÁGINA 13: Galería 7 (Limpia, sin botones) -->
+        <!-- PÁGINA 13: Galería 7 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(1).jpeg" class="page-img">
         </section>
         
-        <!-- PÁGINA 14: Galería 8 + Acceso a Mesas de Regalos (Liverpool & Amazon) -->
-        <!-- Rediseñados: menos largos, subidos un 10% adicional (bottom-[45%]) y con mayor separación (gap-4) -->
+        <!-- PÁGINA 14: Acceso a Mesas de Regalos Liverpool & Amazon (Fondo cenicienta 20.jpg) -->
+        <!-- Estilizados para ser menos largos, subidos un 10% (bottom-[45%]) y con mayor separación (gap-4) -->
         <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(18).jpg" class="page-img">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(20).jpg" class="page-img">
             
             <div class="absolute bottom-[45%] left-1/2 -translate-x-1/2 w-[70%] max-w-[220px] flex flex-col items-center gap-4 z-20">
                 <!-- Botón Liverpool -->
@@ -411,28 +428,27 @@
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(2).jpeg" class="page-img">
         </section>
 
-        <!-- PÁGINA 16: Confirmación de Asistencia sobre la imagen cenicienta (19).jpg -->
-        <!-- Subido un 10% (bottom-[49%]) y menos ancho (w-[75%] max-w-[266px]) -->
+        <!-- PÁGINA 16: Confirmación de Asistencia sobre la imagen cenicienta (21).jpg (Sin fondo blanco, menos ancho en 5% -> w-[75%] max-w-[266px], subido un 10% -> bottom-[49%], fecha 20 de Julio) -->
         <section class="page">
-            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(19).jpg" class="page-img">
+            <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(21).jpg" class="page-img">
             
-            <!-- Contenedor 100% transparente superpuesto elevado y más angosto -->
+            <!-- Contenedor 100% transparente superpuesto e idealmente elevado -->
             <div class="absolute bottom-[49%] left-1/2 -translate-x-1/2 w-[75%] max-w-[266px] flex flex-col items-center text-center z-20">
                 <!-- Mensaje dinámico de pases con fondo traslúcido muy sutil -->
-                <p id="msg" class="font-sans-serif text-xs font-semibold leading-relaxed mb-4 text-[#4a3f5a] bg-white/85 backdrop-blur-md p-3.5 rounded-2xl border border-white/50 shadow-lg w-full"></p>
+                <p id="msg" class="font-sans-serif text-[11px] font-semibold leading-relaxed mb-3.5 text-[#4a3f5a] bg-white/85 backdrop-blur-md p-3 rounded-xl border border-white/40 shadow-md w-full"></p>
                 
                 <!-- Botón de Confirmación Único (Google Forms) -->
                 <div id="options" class="w-full flex flex-col gap-3">
                     <!-- Se generará dinámicamente con JS -->
                 </div>
                 
-                <p class="text-[10.5px] text-[#4a3f5a] font-bold mt-3 font-sans-serif italic bg-white/70 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm w-max">
-                    Confirmar asistencia antes del 20 de Julio de 2026
+                <p class="text-[9.5px] text-[#4a3f5a] font-bold mt-3 font-sans-serif italic bg-white/70 px-2.5 py-1 rounded-full backdrop-blur-sm shadow-sm w-max">
+                    Confirmar antes del 20 de Julio de 2026
                 </p>
             </div>
         </section>
 
-        <!-- PÁGINA 17: Galería Extra (WhatsApp Image 2026-05-26 at 4.40.09 PM (4).jpeg) -->
+        <!-- PÁGINA 17: Galería Extra 1 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(4).jpeg" class="page-img">
         </section>
@@ -442,7 +458,7 @@
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/cenicienta%20(16).jpg" class="page-img">
         </section>
 
-        <!-- PÁGINA 19: Galería Extra 2 (Añadida después de la página 18) -->
+        <!-- PÁGINA 19: Galería Extra 2 -->
         <section class="page">
             <img src="https://raw.githubusercontent.com/regina1503/MIS-XV-A-OS-DANIELA-VALENTINA-/main/WhatsApp%20Image%202026-05-26%20at%204.40.09%20PM%20(2).jpeg" class="page-img">
         </section>
@@ -469,6 +485,11 @@
 
         // Base de datos de invitados
         const lista = [
+            { nombre: "SHARON OCAMPO", pases: 1 },
+            { nombre: "GABRIEL OCAMPO", pases: 1 },
+            { nombre: "CARITINA MIRANDA", pases: 1 },
+            { nombre: "GABRIEL OCAMPO", pases: 1 },
+            { nombre: "JUAN CARLOS GARCIA", pases: 6 },
             { nombre: "JUAN OCAMPO", pases: 2 },
             { nombre: "GIBRAN ESCOBAR", pases: 2 },
             { nombre: "ALMA OCAMPO", pases: 2 },
@@ -492,7 +513,7 @@
             { nombre: "SANDRA MIRANDA", pases: 3 },
             { nombre: "JUAN MIRANDA", pases: 4 },
             { nombre: "JORGE SERRANO", pases: 3 },
-            { font_name: "ARTURO MIRANDA", nombre: "ARTURO MIRANDA", pases: 3 },
+            { nombre: "ARTURO MIRANDA", pases: 3 },
             { nombre: "DIEGO ESCOBAR", pases: 2 },
             { nombre: "ALBERTO MIRANDA", pases: 2 },
             { nombre: "ANTONIO ARRIAGA", pases: 3 },
@@ -532,7 +553,7 @@
             { nombre: "WINNET", pases: 1 }
         ];
 
-        // Función del buscador autocompletable inteligente
+        // Buscador autocompletable para los invitados en la entrada
         nameInput.addEventListener('input', () => {
             const query = nameInput.value.toUpperCase();
             suggestBox.innerHTML = '';
@@ -563,14 +584,14 @@
             }
         });
 
-        // Cerrar el buscador al hacer clic afuera
+        // Cerrar el autocompletado si se hace clic fuera del buscador
         document.addEventListener('click', (e) => {
             if (e.target !== nameInput && e.target !== suggestBox) {
                 suggestBox.classList.add('hidden');
             }
         });
 
-        // Reemplazo del system Alert
+        // Mostrar un toast personalizado integrado en lugar del alert tradicional
         function showNotification(text) {
             const toast = document.getElementById('toastNotification');
             const toastMsg = document.getElementById('toastMsg');
@@ -585,7 +606,7 @@
             }, 3500);
         }
 
-        // Control de entrada de la sesión
+        // Control de inicio e ingreso tras validación de nombre
         function iniciarSesion() {
             const nombreIngresado = nameInput.value.trim().toUpperCase();
             
@@ -608,24 +629,24 @@
                     
                     document.getElementById('bodySnap').style.overflowY = 'auto';
                     
-                    // Iniciar audio automáticamente tras interacción
+                    // Reproducir pista sonora
                     audio.play().then(() => {
                         updateMusicUI(true);
                     }).catch(err => {
-                        console.log("Audio play preventivo");
+                        console.log("Auto-play bloqueado preventivamente por el navegador");
                         updateMusicUI(false);
                     });
 
                     floatingPlayer.classList.remove('hidden');
                     
-                    // Configuración del mensaje e invitaciones pases asignados
+                    // Configuración dinámica del pase e invitados autorizados
                     const textPases = inv.pases === 1 ? "pase personal" : `pases en tu honor`;
-                    document.getElementById('msg').innerHTML = `¡Hola <strong class="text-purple-900">${inv.nombre}</strong>!<br>Nos encantaría contar con tu presencia. Hemos reservado <span class="bg-[#966da0] text-white px-2 py-0.5 rounded-full font-bold">${inv.pases}</span> ${textPases}.`;
+                    document.getElementById('msg').innerHTML = `¡Hola <strong class="text-[#7e528b] font-bold">${inv.nombre}</strong>!<br>Nos encantaría contar con tu presencia. Hemos reservado <span class="bg-[#966da0] text-white px-2 py-0.5 rounded-full font-bold">${inv.pases}</span> ${textPases}.`;
                     
                     const container = document.getElementById('options');
                     container.innerHTML = '';
                     
-                    // Botón ÚNICO de Google Forms para la confirmación oficial
+                    // Botón de redirección directo a tu Formulario de Google oficial
                     const btnForm = document.createElement('a');
                     btnForm.className = "btn-magic w-full text-center py-[11px] rounded-full font-semibold text-[13px] tracking-wide flex items-center justify-center gap-2 font-sans-serif shadow-xl transition-all active:scale-95";
                     btnForm.innerHTML = `<i class="fa-solid fa-file-signature"></i> Confirmar Asistencia`;
@@ -641,7 +662,7 @@
             }
         }
 
-        // Actualizaciones de reproducción de audio
+        // Eventos y actualizaciones del reproductor
         audio.addEventListener('timeupdate', () => {
             if (audio.duration) {
                 const pct = (audio.currentTime / audio.duration) * 100;
@@ -677,7 +698,7 @@
             }
         }
 
-        // Navegación rápida en audio
+        // Navegación en el track
         function seek(e) {
             const width = document.getElementById('progressBar').clientWidth;
             audio.currentTime = (e.offsetX / width) * audio.duration;
@@ -687,7 +708,7 @@
             audio.currentTime += sec; 
         }
 
-        // Cuenta regresiva reducida un 5% en escala de fuente y diseño general
+        // Cuenta regresiva horizontal estilizada en tonos lila
         function updateTimer() {
             const now = new Date().getTime();
             const diff = eventDate - now;
@@ -709,7 +730,7 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // Generador de destellos/polvo de estrellas mágico interactivo
+        // Canvas interactivo para efectos de destellos / polvo de hadas en el fondo al mover el cursor o deslizar el dedo
         const canvas = document.getElementById("sparkleCanvas");
         const ctx = canvas.getContext("2d");
         let particles = [];
@@ -750,7 +771,7 @@
             }
         }
 
-        // Crear efectos de estela mágica al mover el puntero o tocar
+        // Crear estela mágica en eventos táctiles o de ratón
         window.addEventListener("pointermove", (e) => {
             const isPurple = Math.random() > 0.5;
             const hue = isPurple ? `hsla(${Math.random() * 40 + 265}, 80%, 75%, ` : `hsla(${Math.random() * 15 + 40}, 85%, 65%, `;
@@ -759,9 +780,9 @@
             }
         });
 
-        // Partículas automáticas en el ambiente
+        // Partículas sutiles de fondo automáticas
         function addAmbientParticles() {
-            if (particles.length < 40) {
+            if (particles.length < 35) {
                 const x = Math.random() * canvas.width;
                 const y = canvas.height + 10;
                 const isPurple = Math.random() > 0.5;
